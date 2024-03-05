@@ -1,0 +1,1 @@
+imconvert -density 600 bibtex-datasets.pdf -quality 90 bibtex-datasets.png

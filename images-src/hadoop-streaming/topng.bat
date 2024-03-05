@@ -1,0 +1,1 @@
+imconvert -density 600 hadoop-streaming.pdf -quality 90 hadoop-streaming.png

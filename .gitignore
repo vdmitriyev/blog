@@ -1,3 +1,23 @@
+*.pyc
+
+# files
+README.html
+**/personal_configs.py
+
+# folders
+blog-output/*
+output/*
+cache/*
+.venv/*
+.tox/*
+.vscode/*
+dist/*
+docs/_build/*
+**/generated
+**/pelican-themes
+**/pure-single
+**/_old
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
