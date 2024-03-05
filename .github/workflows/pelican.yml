@@ -18,7 +18,7 @@ jobs:
     - name: Clone theme repository
       uses: actions/checkout@v3
       with:
-        repository: https://github.com/ingwinlu/pelican-twitchy 
+        repository: ingwinlu/pelican-twitchy
         path: pelican-themes
     - name: Install pelican theme
       run: |
