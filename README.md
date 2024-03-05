@@ -26,11 +26,13 @@ pelican --listen
 * (alternative) use pre-shipped ```bat``` script
 ```scripts/startSimpleHTTP.bat```
 
-### (Github Actions) personal configurations
+### (Github Actions) 
 
-Create a Github "Secret and variables" tokens for:
-
-* GOOGLE_ANALYTICS
+* Personal configurations - create a Github  tokens for (Settings -> Secret and variables -> Actions):
+	+ GOOGLE_ANALYTICS = 
+	+ PELICAN_THEME_REPO = https://github.com/ingwinlu/pelican-twitchy
+	+ PELICAN_THEME_NAME = pelican-twitchy
+* Activate ```gh-pages``` in the git repository: Settings -> Pages -> Branch (set to ```gh-pages``` and ```/root```)
 
 
 ### (local) personal configurations
@@ -42,7 +44,7 @@ GOOGLE_ANALYTICS = u'UA-'
 
 More about configs and configs themselves you can find in pelican's [quickstart](https://docs.getpelican.com/en/latest/quickstart.html)
 
-### Theme
+### (local) Theme
 
 * Review themes
     - Github - https://github.com/getpelican/pelican-themes

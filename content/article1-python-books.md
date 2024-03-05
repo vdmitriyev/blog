@@ -16,3 +16,6 @@ Of course there are other compilations of Python books existing. To list a few:
 
 * [List of Advanced Python Book on python.org](https://wiki.python.org/moin/AdvancedBooks)
 * [What are the best books / courses for learning Python? at AMA service Quora](http://www.quora.com/What-are-the-best-books-courses-for-learning-Python)
+
+
+There also a number of further matrials on Python available as online articles.

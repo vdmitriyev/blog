@@ -20,10 +20,13 @@ jobs:
           echo "Install dependencies"
           pip install -r requirements.txt
           echo "Clone repo with pelican theme"
-          git clone https://github.com/ingwinlu/pelican-twitchy
+          git clone ${{ secrets.PELICAN_THEME_REPO }}
           echo "Install pelican theme"
-          pelican-themes --install pelican-twitchy
-    - name: Compile with pelican and publish
+          pelican-themes --install ${{ secrets.PELICAN_THEME_NAME }}
+      env:
+        PELICAN_THEME_NAME: ${{ secrets.PELICAN_THEME_NAME }}
+        PELICAN_THEME_REPO: ${{ secrets.PELICAN_THEME_REPO }}
+    - name: Compile with pelican
       run: |
           pelican content
       env:
