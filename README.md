@@ -28,7 +28,7 @@ pelican --listen
 
 ### (Github Actions) personal configurations
 
-Create a Github secret tokens for:
+Create a Github "Secret and variables" tokens for:
 
 * GOOGLE_ANALYTICS
 
