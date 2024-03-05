@@ -24,8 +24,16 @@ jobs:
           echo "Install pelican theme"
           pelican-themes --install pelican-twitchy
     - name: Compile with pelican and publish
-      uses: vdmitriyev/pelican-to-github-pages@v1.4.1
+      run: |
+          pelican content
       env:
         GOOGLE_ANALYTICS: ${{ secrets.GOOGLE_ANALYTICS }}
-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: ${{ github.ref == 'refs/heads/main' }}
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: blog-output/
+        force_orphan: true
     
