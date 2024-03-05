@@ -1,4 +1,4 @@
-name: Deploy
+name: deploy-pelican
 
 on:
   # Trigger the workflow on push on main branch,
@@ -10,9 +10,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with: 
-        submodules: 'true'
-    - uses: rehanhaider/pelican-to-github-pages@v1.0.3
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v3
+    - name: Install dependencies
+      run: |
+          pip install -r requirements.txt
+    - name: Clone theme repository
+      uses: actions/checkout@v3
+      with:
+        repo: https://github.com/getpelican/pelican-themes 
+        path: pelican-themes
+    - name: Install pelican theme
+      run: |
+          pelican-themes --install pelican-twitchy
+    - name: Compile with pelican and publish
+      uses: rehanhaider/pelican-to-github-pages@v1.0.3
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    
