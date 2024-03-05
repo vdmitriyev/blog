@@ -12,16 +12,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v3
-    - name: Install dependencies
+    - name: Install dependencies and theme
       run: |
+          echo "Install dependencies"
           pip install -r requirements.txt
-    - name: Clone theme repository
-      uses: actions/checkout@v3
-      with:
-        repository: ingwinlu/pelican-twitchy
-        path: pelican-themes
-    - name: Install pelican theme
-      run: |
+          echo "Clone repo with pelican theme"
+          git clone https://github.com/ingwinlu/pelican-twitchy
+          echo "Install pelican theme"
           pelican-themes --install pelican-twitchy
     - name: Compile with pelican and publish
       uses: vdmitriyev/pelican-to-github-pages@v1.4.1
