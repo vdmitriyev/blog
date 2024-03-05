@@ -24,7 +24,7 @@ jobs:
       run: |
           pelican-themes --install pelican-twitchy
     - name: Compile with pelican and publish
-      uses: rehanhaider/pelican-to-github-pages@v1.0.3
+      uses: vdmitriyev/pelican-to-github-pages@v1.4.1
       env:
         GOOGLE_ANALYTICS: ${{ secrets.GOOGLE_ANALYTICS }}
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
