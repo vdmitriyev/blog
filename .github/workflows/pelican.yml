@@ -18,7 +18,7 @@ jobs:
     - name: Clone theme repository
       uses: actions/checkout@v3
       with:
-        repo: https://github.com/getpelican/pelican-themes 
+        repository: https://github.com/getpelican/pelican-themes 
         path: pelican-themes
     - name: Install pelican theme
       run: |
@@ -26,5 +26,6 @@ jobs:
     - name: Compile with pelican and publish
       uses: rehanhaider/pelican-to-github-pages@v1.0.3
       env:
+        GOOGLE_ANALYTICS: ${{ secrets.GOOGLE_ANALYTICS }}
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
     

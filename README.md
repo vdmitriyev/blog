@@ -26,10 +26,17 @@ pelican --listen
 * (alternative) use pre-shipped ```bat``` script
 ```scripts/startSimpleHTTP.bat```
 
-### Personal configurations
+### (Github Actions) personal configurations
 
-you need to create ```personal_configs.py``` file and fill following fields:
-```python
+Create a Github secret tokens for:
+
+* GOOGLE_ANALYTICS
+
+
+### (local) personal configurations
+
+You need to create ```personal_configs.py``` file and fill following fields:
+```text
 GOOGLE_ANALYTICS = u'UA-'
 ```
 

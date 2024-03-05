@@ -1,23 +1,28 @@
-try:
-    import os
-    import sys
-    sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)) + '\\')
-    import personal_configs as configs
-except Exception as ex:
-    print ('[e] exception: {}'.format(str(ex)))
-    pass
+import os
+import sys
 
-AUTHOR = 'vdmitriyev'
+GOOGLE_ANALYTICS = None
+
+try:
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) + "\\")
+    from personal_configs import GOOGLE_ANALYTICS
+except Exception as ex:
+    print("[e] exception: {}".format(str(ex)))
+    GOOGLE_ANALYTICS = os.environ.get("GOOGLE_ANALYTICS")
+
+print(f"[i] using GOOGLE_ANALYTICS: {GOOGLE_ANALYTICS}")
+
+AUTHOR = "vdmitriyev"
 SITENAME = "Viktor's blog"
 SITEURL = ""
 
 PATH = "content"
 
-TIMEZONE = 'Europe/Berlin'
+TIMEZONE = "Europe/Berlin"
 
-DEFAULT_LANG = 'en'
+DEFAULT_LANG = "en"
 LOCALE = "en_US.utf8"
-DEFAULT_DATE_FORMAT = ('%B %Y')
+DEFAULT_DATE_FORMAT = "%B %Y"
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = "feeds/all.atom.xml"
@@ -27,24 +32,22 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-#LINKS = (
+# LINKS = (
 #    ("Pelican", "https://getpelican.com/"),
 #    ("Python.org", "https://www.python.org/"),
 #    ("Jinja2", "https://palletsprojects.com/p/jinja/"),
-#)
+# )
 
-#MENUITEMS = (
+# MENUITEMS = (
 #    ('Main', SITEURL),
 #    ('Interesting', SITEURL + '/category/interesting.html'),
 #    ('Research', SITEURL + '/category/research.html'),
 #    ('Thoughts', SITEURL + '/category/thoughts.html'),
 #    ('Разное', SITEURL + '/category/raznoe.html')
-#)
+# )
 
 # Social widget
-SOCIAL = (
-    ("Github", "https://github.com/vdmitriyev"),
-)
+SOCIAL = (("Github", "https://github.com/vdmitriyev"),)
 
 DEFAULT_PAGINATION = 10
 
@@ -52,11 +55,6 @@ DEFAULT_PAGINATION = 10
 RELATIVE_URLS = True
 
 OUTPUT_PATH = "blog-output"
-STATIC_PATHS = ['images']
+STATIC_PATHS = ["images"]
 
-THEME = 'pelican-twitchy'
-
-try:
-    GOOGLE_ANALYTICS = configs.GOOGLE_ANALYTICS
-except Exception as ex:
-    pass
+THEME = "pelican-twitchy"
