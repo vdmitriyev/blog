@@ -1,8 +1,8 @@
-Title: How to export MS Power Point Slides to a PDF file and keep Animations
+w: How to export MS Power Point Slides to a PDF file and keep Animations
 Date: 2015-06-03 18:00
 Tags: PPT, PDF, animations, export
 
-![From Animated PPT to Animated PDF]({filename}../images/random/PPT-to-PDFwith-Animations.png)
+![From Animated PPT to Animated PDF]({static}../images/random/PPT-to-PDFwith-Animations.png)
 
 From time to time I need to present some content in-front of the audience, of course in form of the presentation with some slides helping me. Despite I'm not a huge fan of animations, they can be really helpful in delivering the ideas during a talk. Especially, animations within the presentations are extremely helpful when the content of the slide should be delivered step-by-step.
 

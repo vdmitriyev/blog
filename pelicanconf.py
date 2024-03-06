@@ -1,5 +1,6 @@
 import os
 import sys
+from datetime import datetime
 
 GOOGLE_ANALYTICS = None
 
@@ -15,6 +16,7 @@ print(f"[i] using GOOGLE_ANALYTICS: {GOOGLE_ANALYTICS}")
 AUTHOR = "vdmitriyev"
 SITENAME = "Viktor's blog"
 SITEURL = ""
+COPYRIGHT_YEAR = datetime.now().year
 
 PATH = "content"
 
@@ -25,29 +27,25 @@ LOCALE = "en_US.utf8"
 DEFAULT_DATE_FORMAT = "%B %Y"
 
 # Feed generation is usually not desired when developing
-FEED_ALL_ATOM = "feeds/all.atom.xml"
+FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-# Blogroll
-# LINKS = (
-#    ("Pelican", "https://getpelican.com/"),
-#    ("Python.org", "https://www.python.org/"),
-#    ("Jinja2", "https://palletsprojects.com/p/jinja/"),
-# )
+PLUGINS = [
+    'neighbors', # find next, previous article
+]
 
-# MENUITEMS = (
-#    ('Main', SITEURL),
-#    ('Interesting', SITEURL + '/category/interesting.html'),
-#    ('Research', SITEURL + '/category/research.html'),
-#    ('Thoughts', SITEURL + '/category/thoughts.html'),
-#    ('Разное', SITEURL + '/category/raznoe.html')
-# )
+# Markdown extensions
 
 # Social widget
-SOCIAL = (("Github", "https://github.com/vdmitriyev"),)
+SOCIAL = {
+    'facebook': "#",
+    'github'  : 'https://github.com/vdmitriyev',
+    'twitter' : 'https://twitter.com/vdmitriyev',
+    'linkedin': "#"
+}
 
 DEFAULT_PAGINATION = 10
 
@@ -57,4 +55,6 @@ RELATIVE_URLS = True
 OUTPUT_PATH = "blog-output"
 STATIC_PATHS = ["images"]
 
-THEME = "pelican-twitchy"
+#THEME = "pelican-twitchy"
+THEME = "simplify-theme"
+

@@ -3,7 +3,7 @@ Date: 2016-03-03 18:00
 Tags: hadoop, streaming, xml, bigdata, python
 
 <center>
-    ![Hadoop Streaming and XML with Python]({filename}../images/random/hadoop-streaming.png)
+    ![Hadoop Streaming and XML with Python]({static}../images/random/hadoop-streaming.png)
 </center>
 
 

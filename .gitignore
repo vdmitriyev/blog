@@ -15,7 +15,9 @@ dist/*
 docs/_build/*
 **/generated
 **/pelican-themes
+**/pelican-plugins
 **/pure-single
+**/simplify-theme
 **/_old
 
 # Byte-compiled / optimized / DLL files

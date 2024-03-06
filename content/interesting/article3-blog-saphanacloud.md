@@ -28,44 +28,44 @@ Here is the short overview of upcoming steps. First of all, the empty HTML5 Appl
 After getting to the [SAP HANA Cloud](https://account.hanatrial.ondemand.com/) cockpit select from the main menu on the left "HTML5 Applications" (as it's shown on the image).
 
 <center>
-    ![SAP HANA Cloud Pelican Blog]({filename}../images/blogpelicansaphanacloud/00.png)
+    ![SAP HANA Cloud Pelican Blog]({static}../images/blogpelicansaphanacloud/00.png)
 </center>
 
 Then go and create new HTML5 application by selecting "New Application", as it's shown on the image.
 
 <center>
-    ![SAP HANA Cloud Pelican Blog]({filename}../images/blogpelicansaphanacloud/01.png)
+    ![SAP HANA Cloud Pelican Blog]({static}../images/blogpelicansaphanacloud/01.png)
 </center>
 
 Give an name to the new application that you are creating. For instance, I gave a simple name "blog". After setting the name to a value of your choice, click save button.
 
 <center>
-    ![SAP HANA Cloud Pelican Blog]({filename}../images/blogpelicansaphanacloud/02.png)
+    ![SAP HANA Cloud Pelican Blog]({static}../images/blogpelicansaphanacloud/02.png)
 </center>
 
 Congratulations, you just created your own HTML5 application inside SAP HANA Cloud. Now you should see something similar to the image below. I want to stress, that you **"only"** created application and it's not running for a moment, to run it, you will need to set a version to your commit from git and after only that you will be able to see rendering page in you browser. It will be demonstrated later on.
 
 <center>
-    ![SAP HANA Cloud Pelican Blog]({filename}..//images/blogpelicansaphanacloud/03.png)
+    ![SAP HANA Cloud Pelican Blog]({static}..//images/blogpelicansaphanacloud/03.png)
 </center>
 
 Navigate to your newly created application by click it's name. For a moment, you should see something similar to the image below. The image is telling you that the application is not yet activate.
 
 <center>
-    ![SAP HANA Cloud Pelican Blog]({filename}..//images/blogpelicansaphanacloud/04.png)
+    ![SAP HANA Cloud Pelican Blog]({static}..//images/blogpelicansaphanacloud/04.png)
 </center>
 
 After navigate to sub-menu titled "Visioning", you will see following important for us fields (see the image below) **Git Repository Url** and **Actions**
 
 The URL that is shown to you under the title **Git Repository Url** will be used later on for the communication between you local git repository and remote repository hosted on SAP HANA Cloud.
 <center>
-    ![SAP HANA Cloud Pelican Blog]({filename}..//images/blogpelicansaphanacloud/05-01.png)
+    ![SAP HANA Cloud Pelican Blog]({static}..//images/blogpelicansaphanacloud/05-01.png)
 </center>
 
 Menu option **Actions** is very important to make SAP HANA Cloud understand which exactly version of the repository to render (activate or run). Without setting version to your particular commit, the button that make application run won't be even enabled.
 
 <center>
-    ![SAP HANA Cloud Pelican Blog]({filename}..//images/blogpelicansaphanacloud/05-02.png)
+    ![SAP HANA Cloud Pelican Blog]({static}..//images/blogpelicansaphanacloud/05-02.png)
 </center>
 
 ### Cloning Created HTML5 Application on Computer
@@ -78,13 +78,13 @@ git clone <Your Git Repository Url>
 You terminal should look like on the image below.
 
 <center>
-    ![SAP HANA Cloud Pelican Blog]({filename}..//images/blogpelicansaphanacloud/06.png)
+    ![SAP HANA Cloud Pelican Blog]({static}..//images/blogpelicansaphanacloud/06.png)
 </center>
 
 The git server will ask you to type in your credentials, you have to use the the same credentials you used to authorize yourself inside SAP HANA Cloud Cockpit (the same one your are using for scn.sap.com). Image below demonstrates how it should look like.
 
 <center>
-    ![SAP HANA Cloud Pelican Blog]({filename}..//images/blogpelicansaphanacloud/07.png)
+    ![SAP HANA Cloud Pelican Blog]({static}..//images/blogpelicansaphanacloud/07.png)
 </center>
 
 After creating git clone of your repository from SAP HANA Cloud, you can start working with it. Basically, you can upload any web related files (HTML, CSS,JS, etc.).
@@ -114,30 +114,30 @@ If you followed order of git command above at the end you will be able to see at
 Navigate to the HTML5 application and select 'Visioning'. After the main working panel will load, click on the to the icon located in the 'Action' column and set desired version (as and example I set '0.0.1'), as it shown on the image below.
 
 <center>
-    ![SAP HANA Cloud Pelican Blog]({filename}..//images/blogpelicansaphanacloud/09.png)
+    ![SAP HANA Cloud Pelican Blog]({static}..//images/blogpelicansaphanacloud/09.png)
 </center>
 
 After setting the version you should see that the column 'Version' is poiting to the version you just set.
 
 <center>
-    ![SAP HANA Cloud Pelican Blog]({filename}..//images/blogpelicansaphanacloud/10.png)
+    ![SAP HANA Cloud Pelican Blog]({static}..//images/blogpelicansaphanacloud/10.png)
 </center>
 
 To activate your newly make version, click on the icon in the 'Action' column again and confirm your choice.
 
 <center>
-    ![SAP HANA Cloud Pelican Blog]({filename}..//images/blogpelicansaphanacloud/11.png)
+    ![SAP HANA Cloud Pelican Blog]({static}..//images/blogpelicansaphanacloud/11.png)
 </center>
 
 Now go to the "HTML5 Application Dashboard" and follow offered URL as it shown on the image below.
 
 <center>
-    ![SAP HANA Cloud Pelican Blog]({filename}..//images/blogpelicansaphanacloud/12.png)
+    ![SAP HANA Cloud Pelican Blog]({static}..//images/blogpelicansaphanacloud/12.png)
 </center>
 
 Your final result should look like this.
 <center>
-    ![SAP HANA Cloud Pelican Blog]({filename}..//images/blogpelicansaphanacloud/13.png)
+    ![SAP HANA Cloud Pelican Blog]({static}..//images/blogpelicansaphanacloud/13.png)
 </center>
 
 **Congratulation!**

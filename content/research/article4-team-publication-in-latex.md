@@ -2,7 +2,7 @@ Title: How to Write a Team Publication in LaTeX and Dont Get Mad
 Date: 2015-05-29 18:00
 Tags: collection, phd, research, latex, writing
 
-![Don't get mad, get motivated and use LaTeX]({filename}../images/random/dont-get-mad-use-latex.png)
+![Don't get mad, get motivated and use LaTeX]({static}../images/random/dont-get-mad-use-latex.png)
 
 <center>
 **Publishing is not a sprint to the finish line.** </br>

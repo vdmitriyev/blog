@@ -12,6 +12,6 @@ All I did in order to be blocked - I tried to synchronize my previously written 
 
 Here is the part from their answer telling me what was wrong with the content I provided: *"the Content is not spam, and does not contain unethical or unwanted commercial content designed to drive traffic to third party sites or boost the search engine rankings of third party sites"*. The whole emails:
 
-![False Positive in Real Life - Wordpress Just Blocked My Personal Blog]({filename}../images/random/FalsePositiveinRealLife.png)
+![False Positive in Real Life - Wordpress Just Blocked My Personal Blog]({static}../images/random/FalsePositiveinRealLife.png)
 
 P.S. **Viva la GitHub!**

@@ -3,7 +3,7 @@ Date: 2016-10-11 17:30
 Tags: in-memory computing, in-memory, in-memory databases, research, materials, links
 
 <center>
-    ![Power To RAM]({filename}../images/random/in-memory-materials.png)
+    ![Power To RAM]({static}../images/random/in-memory-materials.png)
 </center>
 
 Unfortunately, there are not many materials in the form of textbooks available that are explicitly dedicated to explaining in-memory computing and in-memory databases in detail. That's why for a moment most valuable and usable sources of information in this domain are mainly blog articles, online courses, source code documentation, and scientific publications. Please, find below links to some online courses (free once) and other useful materials. A brief overview of technologies can be found in the following post [Innovations of In-Memory Data Management](https://hpi.de/plattner/research/in-memory-data-management-for-enterprise-systems/innovations.html).

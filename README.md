@@ -26,34 +26,38 @@ pelican --listen
 * (alternative) use pre-shipped ```bat``` script
 ```scripts/startSimpleHTTP.bat```
 
-### (Github Actions) 
+### Deploy with Github Actions
 
 * Personal configurations - create a Github  tokens for (Settings -> Secret and variables -> Actions):
 	+ GOOGLE_ANALYTICS = 
-	+ PELICAN_THEME_REPO = https://github.com/ingwinlu/pelican-twitchy
-	+ PELICAN_THEME_NAME = pelican-twitchy
+	+ PELICAN_THEME_REPO = https://github.com/vuquangtrong/simplify-theme
+	+ PELICAN_THEME_NAME = simplify-theme
 * Activate ```gh-pages``` in the git repository: Settings -> Pages -> Branch (set to ```gh-pages``` and ```/root```)
 
 
-### (local) personal configurations
+### Deploy Locally 
+
+###### Personal Config
 
 You need to create ```personal_configs.py``` file and fill following fields:
 ```text
 GOOGLE_ANALYTICS = u'UA-'
 ```
-
 More about configs and configs themselves you can find in pelican's [quickstart](https://docs.getpelican.com/en/latest/quickstart.html)
 
-### (local) Theme
+###### Add Theme + Plugins
 
 * Review themes
-    - Github - https://github.com/getpelican/pelican-themes
-    - Demos- https://pelicanthemes.com/
+    + Github (all themes) - https://github.com/getpelican/pelican-themes
+    + Github (selected themes) 
+		- https://github.com/vuquangtrong/simplify-theme
+* Review plugins
+	+ Github (all plugins) - https://github.com/orgs/pelican-plugins/repositories
 
-* Install themes (e.g, ```pelican-twitchy```)
+* Install themes (e.g, ```simplify-theme```)
 ```
-git clone https://github.com/getpelican/pelican-themes
-pelican-themes --install pelican-themes/pelican-twitchy
+git clone https://github.com/vuquangtrong/simplify-theme
+pelican-themes --install simplify-theme
 ```
 
 ### Author

@@ -3,7 +3,7 @@ Date: 2015-08-11 18:00
 Tags: science, phd, research, collection
 
 <center>
-    ![Own Collection of Resources Related to Data Science and Buzz Around]({filename}../images/random/datascience-related-resources-white.png)
+    ![Own Collection of Resources Related to Data Science and Buzz Around]({static}../images/random/datascience-related-resources-white.png)
 </center>
 
 I'm subscribed to the following newsletters and I'm trying to dedicate 1-2 hours of my time weekly in order to get at once through all newsletters I receive regularly.

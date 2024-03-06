@@ -2,7 +2,7 @@ Title: Publications Bibliography Based on BibTeX
 Date: 2015-11-13 18:00
 Tags: TeX, BibTeX, bibliography, research
 
-![BibTeX]({filename}../images/random/bibtex.png)
+![BibTeX]({static}../images/random/bibtex.png)
 
 It's often not a trivial task to manage bibliographies of your own publications. Especially, it's getting harder with time as long as more services and tools appearance on the horizon. And very often there is no chance for research communities to ignore some of them because they are first of all good and simplify life and also receive a good acceptance from a community and widely known. Thus, it means that there are a number of amazing services, which definitely must be used by researchers on a regular bases. But for a moment let's focus more on BibTeX related services (or the ones that are using BibTeX as one of the "core" sources of "knowledge" and "data"). One of the "fresh" examples is an open source initiative and platform at once called [ORCID](https://orcid.org/), which tries to simplify the process of managing a history of your publications and make them more sustainable, easily manageable and widely available.
 
