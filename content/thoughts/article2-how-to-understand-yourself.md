@@ -1,5 +1,6 @@
 Title: How to Understand Yourself: Simplest Possible Guideline and Drawbacks of Other Methods
 Date: 2014-09-25 18:00
+Summary:
 Tags: thoughts
 
 Today I got a question from my friend on the topic of analysis. And this kind of analysis is usually very interesting for anyone who at least once in his life tried to understand himself. This kind of analysis usually called "self-analysis". "Self-analysis" means understanding your own behavior, the reasons behind your certain thoughts, actions and reactions on a particular activity, your opinion about particular global or local events, etc.

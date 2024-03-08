@@ -1,5 +1,6 @@
 Title: Hadoop Streaming and XML with Python
 Date: 2016-03-03 18:00
+Summary:
 Tags: hadoop, streaming, xml, bigdata, python
 
 <center>

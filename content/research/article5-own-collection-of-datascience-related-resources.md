@@ -1,5 +1,6 @@
 Title: Own Collection of Resources Related to Data Science and Buzz Around
 Date: 2015-08-11 18:00
+Summary:
 Tags: science, phd, research, collection
 
 <center>

@@ -1,5 +1,6 @@
 Title: List of Python Books to Bring Your Python Skills One Level Up
 Date: 2015-03-06 00:00
+Summary: 
 Tags: books, collection, links, python
 
 I have an programming experience in various of languages, mainly from the mainstream category like C++, Java, C#, JavaScript, etc. . Despite having a really big variety of programming languages, sometimes you want to stick to particular one. For me it’s currently the [Python](https://www.python.org/).

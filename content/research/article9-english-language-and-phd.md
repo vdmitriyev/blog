@@ -1,5 +1,6 @@
 Title: English Language And PhD
 Date: 2017-04-04 16:00
+Summary: 
 Tags: english, research, materials, links
 
 There is always a chance that you will be writing your doctoral work, not in your mother language. Another fact is that used by your language most probably will be English. And even if you are not located in an English speaking country, there is always a huge probability that you are going to use English for your writing. Thus, the collection of materials that can be revised from time to time in order to refresh rules of a foreign language is usually a handy tool.

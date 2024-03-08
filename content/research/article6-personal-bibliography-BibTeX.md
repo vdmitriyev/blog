@@ -1,5 +1,6 @@
 Title: Publications Bibliography Based on BibTeX
 Date: 2015-11-13 18:00
+Summary: 
 Tags: TeX, BibTeX, bibliography, research
 
 ![BibTeX]({static}../images/random/bibtex.png)

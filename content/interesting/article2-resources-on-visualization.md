@@ -1,5 +1,6 @@
 Title: Worth Checking Resources On Visualization
 Date: 2015-02-06 15:10
+Summary:
 Tags: links, materials, visualization
 
 Collection of the resources about the generic visualization techniques, examples, tools that I personally like and found worth checking and seeing at least once.

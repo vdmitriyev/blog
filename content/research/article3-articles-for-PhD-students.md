@@ -1,5 +1,6 @@
 Title: Articles for PhD Students
 Date: 2015-01-28 11:40
+Summary: This blog post offers a collection of articles, which are worth reading if you started to think about continuing your education as a PhD student
 Tags: collection, phd, research, tips
 
 As a time of your master degree pass by, or any other "after big study activity", people start to think about the future. And one of the possible "future step" that they consider as an important and very prominent one is doing a PhD.

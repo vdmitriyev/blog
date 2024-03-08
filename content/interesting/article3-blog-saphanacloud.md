@@ -1,5 +1,6 @@
 Title: Hosting Your Generated from Markdown by Python Static Blog in the SAP HANA Cloud's Git Repository
 Date: 2015-03-13 18:07
+Summary:
 Tags: python, git, github, saphanacloud, markdown, blog, cloud, html5
 
 ### About

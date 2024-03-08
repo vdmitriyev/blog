@@ -26,6 +26,19 @@ DEFAULT_LANG = "en"
 LOCALE = "en_US.utf8"
 DEFAULT_DATE_FORMAT = "%B %Y"
 
+PAGE_PATHS = [
+    'pages'
+]
+
+DIRECT_TEMPLATES = [
+    'index',
+    'authors',
+    'categories',
+    'tags',
+    'archives',
+    '404',
+]
+
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
@@ -53,6 +66,8 @@ DEFAULT_PAGINATION = 10
 RELATIVE_URLS = True
 
 OUTPUT_PATH = "blog-output"
+DELETE_OUTPUT_DIRECTORY = True
+
 STATIC_PATHS = ["images"]
 
 #THEME = "pelican-twitchy"

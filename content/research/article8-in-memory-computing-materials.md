@@ -1,5 +1,6 @@
 Title: Online Materials on In-Memory Computing
 Date: 2016-10-11 17:30
+Summary: 
 Tags: in-memory computing, in-memory, in-memory databases, research, materials, links
 
 <center>
