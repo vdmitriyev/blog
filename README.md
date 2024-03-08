@@ -21,7 +21,7 @@ python -m http.server 5151 --bind 127.0.0.1
 ```
 * (alternative) use internal web server from pelican
 ```
-pelican --listen
+pelican -r --listen
 ```
 * (alternative) use pre-shipped ```bat``` script
 ```scripts/startSimpleHTTP.bat```
