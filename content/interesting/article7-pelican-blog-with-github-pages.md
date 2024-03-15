@@ -10,7 +10,7 @@ This tutorial will guide you through setting up and deploying a blog using [Peli
 
 #### Install and Configure Pelican
 
-```
+```bash
 pip install pelican
 ```
 
@@ -35,8 +35,8 @@ If you prefer, you can use the a batch script located at [scripts/compilePelican
 <br>
 ### Install Theme
 <br>
-Here's an example of installing the ```simplify-theme```
-```
+An example how to install a custom theme called ```simplify-theme```
+```bash
 git clone https://github.com/vuquangtrong/simplify-theme
 pelican-themes --install simplify-theme
 ```
@@ -66,7 +66,7 @@ This starts the server, and you can access your blog at [http://127.0.0.1:8000](
 #### Deploying to GitHub Pages
 <br>
 
-Generate Personal Access Tokens: To deploy your blog to GitHub Pages, you'll need to create personal access tokens in your GitHub account. 
+To deploy your blog to GitHub Pages, you'll need to generate personal access tokens in your GitHub account. 
 
 Go to **Settings -> Secrets and variables -> Actions**.
 
@@ -76,12 +76,12 @@ Create tokens for the following variables:
 * PELICAN_THEME_REPO (URL of your theme repository, e.g., https://github.com/vuquangtrong/simplify-theme)
 * PELICAN_THEME_NAME (name of your theme, e.g., simplify-theme)
 
-**Activate GitHub Pages**: In your GitHub repository settings, navigate to Pages. Select the branch named gh-pages and the source directory set to ```/root```. This configures GitHub Pages to use the content from your ```gh-pages``` branch.
+After that, you will need to **activate GitHub Pages** within your GitHub repository. In your GitHub repository settings, navigate to Pages. Select the branch named gh-pages and the source directory set to ```/root```. This configures GitHub Pages to use the content from your ```gh-pages``` branch.
 
 Create a ```pelican.yml``` file in the ```.github/workflows``` of your github repository. Example can be viewed [here](https://github.com/vdmitriyev/blog/blob/main/.github/workflows/pelican.yml).
 
 <br>
-#### Final Words
+#### Summary
 <br>
 
 This tutorial provides a foundation for getting started with Pelican and Github Pages. With its flexibility and ease of use, Pelican empowers you to create a compelling and personalized blog. Feel free to explore the official Pelican documentation for more advanced features and customization options.
