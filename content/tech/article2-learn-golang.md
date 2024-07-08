@@ -1,4 +1,4 @@
-Title: Getting Started with Go in 2024
+Title: Learn Go Programming: A Beginner's Guide for 2024
 Date: 2024-07-07 20:00
 Summary: 
 Tags: tech, links, go, golang, materials
@@ -13,7 +13,7 @@ In general, learning something completely new in tech is incredibly challenging.
 * **Dedication/Commitment**: Besides time, sticking with a learning path takes focus and perseverance. For instance, a technology could be big and complex, and boring :) 
 * **Hands On**: Sometimes, our current job role doesn't offer opportunities to apply newly acquired technical skills. As a result, lack of practical application could be demotivating.
 * **Factor: FUN**: Even with a lot of dedication and time, some technical subjects can be very dry. Without finding a way to make the learning process engaging, it's easy to lose interest.
-* **Start Issue**: The last hurdle I would like to mention is a hesitation to find a right start point. Because sometimes all it takes is to start.
+* **Start Issue**: The last hurdle I would like to mention is a hesitation to find a right starting point. However, remember - sometimes you just need to start.
 
 Considering mentioned issues, let us get back to learning Go. One can easy fill overwhelmed with materials, new concepts, issues, opinions and gate keeping activities. Thus, finding out a right way is crucial. In most of the cases figuring out the "the right path" is going to be individual. This particular article is an attempt to share personal experience on learning Go in 2024.
 
@@ -50,6 +50,7 @@ After getting through a generic approach one could wonder: "It sound nice and go
     + [Melkey](https://www.youtube.com/@MelkeyDev)
 * Watch, understand and try out examples from the amazing Go class by [Matt Holiday](https://www.youtube.com/@mattkdvb5154)
     + [Go Class by Matt Holiday (2020)](https://www.youtube.com/watch?v=iDQAZEJK8lI&list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)
+* Read a book of your choice
 
 In case you are searching for further Go materials, please consider following sources:
 
