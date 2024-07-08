@@ -1,7 +1,7 @@
 Title: Learn Go Programming: A Beginner's Guide for 2024
 Date: 2024-07-07 20:00
 Summary: 
-Tags: tech, links, go, golang, materials
+Tags: links, go, golang, materials, tech
 
 Updated on: **08.07.2024**
 
