@@ -5,7 +5,7 @@ Tags: tech, links, go, golang, materials
 
 Updated on: **08.07.2024**
 
-![alt text](../images/tech-02-golang.png)
+![alt text]({static}../images/tech-02-golang.png)
 
 This article is for the once who would like to learn some "new shiny tech thing". In this case this new thing is a [Go](https://go.dev/) programming language (a.k.a. Golang). Learning a new programming language could be challenging on its own. Specially, if a language you are learning is no like other once you had learned and used for a long (or short) time. In my own case, this hits quite good: despite having experience with "classical compiled languages" like Java, C#, etc. and "classical interpreted languages" like Python, Ruby, etc. it is still not an easy job to master Go (e.g. always try to add "golang" to your search query, in order to find the related materials).
 
