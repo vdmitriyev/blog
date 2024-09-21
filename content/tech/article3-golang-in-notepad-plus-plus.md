@@ -5,19 +5,19 @@ Tags: notepad++, go, golang, highlight, tech
 
 Updated on: **21.09.2024**
 
-Highlighting code in a text editor like Notepad++ or Visual Studio Code is a important feature for software developers. It helps you quickly identify different elements in the code (e.g., variables, functions, and keywords). This makes it easier to read, understand, and find specific parts of your code.
+Highlighting code in a text editor like [Notepad++](https://notepad-plus-plus.org/) or [Visual Studio Code](https://code.visualstudio.com/) is a important feature for software developers. It helps you quickly identify different elements in the code (e.g., variables, functions, and keywords). This makes it easier to read, understand, and find specific parts of your code.
 
 ### The Right Tool for the Job
 
-Using a good text editor is like having a powerful tool in your toolbox. It could be challenging to only use a basic text editor for coding tasks. However, using a lightly weighted editor with features like syntax highlighting, code completion, and debugging can save you a lot of time and frustration. For me personally, such editor on a Windows is Notepad++ .
+Using a good text editor is like having a powerful tool in your toolbox. It could be challenging to only use a basic text editor for coding tasks. However, using a lightly weighted editor with features like syntax highlighting can save you a lot of time. For me personally, such editor on Windows is Notepad++.
 
-### Missing proper highlighting for golang in Notepad++
+### Missing proper highlighting for Go in Notepad++
 
-Unfortunately Notepad++ doesn't have built-in syntax highlighting for Go. Or I was not able to properly enable it. This means that when you open a Go file in Notepad++, the code won't be colored and elements like keywords, variables, and functions will look like a usual text.
+Unfortunately Notepad++ doesn't have built-in syntax highlighting for Go. At least, I was not able to properly enable it. This means that when you open a Go file in Notepad++, the code won't be colored and elements like keywords, variables, and functions will look like a usual text.
 
-Notepad++ has a handy feature that lets you create your own "User Defined Languages". This means you can customize the editor to highlight code for any programming language, including Go. You could create a special XML file with rules to define the syntax of your language, and Notepad++ will use these rules to color-code your code.
+Notepad++ has a handy feature that lets you create your own ["User Defined Languages"](https://npp-user-manual.org/docs/user-defined-language-system/). It means that you could customize the editor to highlight code for any programming language, including Go. All you need to do, is to create a special XML file with rules to define the syntax of your language, and Notepad++ will use these rules to color-code your code.
 
-Do not worry, if you need a **ready to go** highlighter for golang use can use the one, I had created for me: [go_simple_darkmode_monokai.xml](https://github.com/vdmitriyev/sourcecodesnippets/blob/master/notepad%2B%2B/go_simple_darkmode_monokai.xml)
+Do not worry, if you need a **ready to go** highlighter for Go use can use the one, I had created one: [go_simple_darkmode_monokai.xml](https://github.com/vdmitriyev/sourcecodesnippets/blob/master/notepad%2B%2B/go_simple_darkmode_monokai.xml)
 
 ### Installation
 
