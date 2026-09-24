@@ -1,6 +1,6 @@
-title: llmexer Tutorial - From a Literature Search to LLM Experiments
+title: llmexer Tutorial - From a Literature Search to Reproducible LLM Experiments with Search Results
 Date: 2026-09-24 23:00
-Summary: "Step-by-step tutorial: search papers on Semantic Scholar, build a dataset, and run reproducible prompt experiments across multiple LLMs with the llmexer CLI."
+Summary: Step-by-step tutorial: search papers, build a dataset, and run reproducible prompt experiments across multiple LLMs with the llmexer CLI.
 Tags: llmexer, llm, literature review, research, ollama, openrouter, python, cli, tutorial
 
 
