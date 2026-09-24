@@ -261,12 +261,12 @@ Progress and token counts are available at any time with `llmexer exp stats --pi
 llmexer exp export --pid 0testruns
 ```
 
-![Exporting the experiment as HTML]{static}../images/llmexer-tutorial/18-exp-export.png)
+![Exporting the experiment as HTML]({static}../images/llmexer-tutorial/18-exp-export.png)
 
 The export is a single self-contained HTML page written next to the database. It has sortable columns, per-column filters, a copy button on every cell, and a ready-to-run `experiment try` command for each row:
 
 <center>
-![The exported HTML report in the browser]{static}../images/llmexer-tutorial/20-exp-export-html.png)
+    ![The exported HTML report in the browser]({static}../images/llmexer-tutorial/20-exp-export-html.png)
 </center>
 
 Exports accept the same filters as `run`, plus two of their own: `--filter-code` (a glob over the row code) and `--filter-response` (a regular expression over the model answer), for example `--filter-response '"doesTitleDescribeAbstract":\s*"no"'`. This filter option is useful, if a database with experiments contains over 10K rows - without a filter, the exported HTML will be too big for a browser to handle. 
