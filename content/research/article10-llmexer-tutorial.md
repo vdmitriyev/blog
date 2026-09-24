@@ -14,9 +14,9 @@ In this tutorial we walk through a complete run: we search the literature on dem
 
 ## What you need
 
-- Python and [`uv`](https://docs.astral.sh/uv/) (plain `pip` works too)
-- Access to at least one LLM: a local [Ollama](https://ollama.com/) or [vLLM](https://vllm.ai/) server, or an API key for LiteLLM or OpenRouter
-- Internet access for the literature search (Semantic Scholar, optionally OpenAlex)
+- Python 
+- [`uv`](https://docs.astral.sh/uv/) (`pip` works as well)
+- Access to at least one LLM: a local [ollama](https://ollama.com/) or [vLLM](https://vllm.ai/) server, or an API key for LiteLLM or OpenRouter
 
 ## Step 1: Install `llmexer`
 
