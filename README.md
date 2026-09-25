@@ -30,8 +30,8 @@ pelican -r --listen
 
 * Personal configurations - create a Github  tokens for (Settings -> Secret and variables -> Actions):
 	+ GOOGLE_ANALYTICS = 
-	+ PELICAN_THEME_REPO = https://github.com/vuquangtrong/simplify-theme
-	+ PELICAN_THEME_NAME = simplify-theme
+	+ PELICAN_THEME_REPO = https://github.com/vdmitriyev/simplify-next
+	+ PELICAN_THEME_NAME = simplify-next
 * Activate ```gh-pages``` in the git repository: Settings -> Pages -> Branch (set to ```gh-pages``` and ```/root```)
 
 

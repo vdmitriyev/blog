@@ -75,6 +75,8 @@ STATIC_PATHS = [
     'search-index.st',
 ]
 
-#THEME = "pelican-twitchy"
 THEME = "simplify-next"
 
+
+GDPR_CONSENT = True # show an accept/reject banner
+GDPR_PRIVACY_POLICY_URL = '/pages/privacy-policy.html' # linked from the consent banner and footer
