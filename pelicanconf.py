@@ -37,6 +37,7 @@ DIRECT_TEMPLATES = [
     'tags',
     'archives',
     '404',
+    'search',
 ]
 
 # Feed generation is usually not desired when developing
@@ -48,6 +49,7 @@ AUTHOR_FEED_RSS = None
 
 PLUGINS = [
     'neighbors', # find next, previous article
+    
 ]
 
 # Markdown extensions
@@ -68,8 +70,11 @@ RELATIVE_URLS = True
 OUTPUT_PATH = "blog-output"
 DELETE_OUTPUT_DIRECTORY = True
 
-STATIC_PATHS = ["images"]
+STATIC_PATHS = [
+    "images", 
+    'search-index.st',
+]
 
 #THEME = "pelican-twitchy"
-THEME = "simplify-theme"
+THEME = "simplify-next"
 

@@ -1,0 +1,74 @@
+version: '3'
+
+tasks:
+
+  check-virtualenv:
+    desc: checks Python's virtualenv activation
+    aliases: [cv]
+    silent: true
+    internal: true
+    run: once
+    cmds:
+      - echo "Check existence of a virtual directory-> {{.VENV_DIR}}"
+      - test -d {{.VENV_DIR}}
+      - echo -n "Check if virtual environment is active-> " && python -c "import sys; print('virtualenv is active' if sys.prefix != sys.base_prefix else 'virtualenv is NOT active')"
+      - python -c "import sys; exit(1 if sys.prefix == sys.base_prefix else 0)"
+      - python --version
+      
+  install:
+    desc: creates the virtualenv and installs pelican and dependencies
+    silent: true
+    aliases: [i]    
+    cmds:
+      - cmd: ./install.sh
+        platforms: [linux, darwin]
+      - cmd: install.cmd
+        platforms: [windows]
+
+  build:
+    desc: builds the blog with pelican (dev + publish config)
+    silent: true
+    aliases: [b]
+    deps: [check-virtualenv, search-index]
+    cmds:
+      - cmd: ./build.sh
+        platforms: [linux, darwin]
+      - cmd: build.cmd
+        platforms: [windows]
+
+  serve:
+    desc: builds and serves the blog locally with autoreload
+    silent: true
+    aliases: [s]
+    deps: [check-virtualenv, search-index]
+    cmds:
+      - cmd: ./serve.sh
+        platforms: [linux, darwin]
+      - cmd: serve.cmd
+        platforms: [windows]
+
+  search-index:
+    desc: builds the Stork search index (via Docker) for example/content
+    silent: true
+    aliases: [si]
+    deps: [check-virtualenv]
+    vars:
+      DOCKER_STORK_DIR: simplify-next/docker/stork
+      SEARCH_CONFIG_SCRIPT: simplify-next/example/generate_search_config.py
+      SEARCH_CONTENT_DIR: content
+      SEARCH_OUTPUT_DIR: content
+    cmds:
+      - python {{.SEARCH_CONFIG_SCRIPT}} {{.SEARCH_CONTENT_DIR}} --output-dir {{.SEARCH_OUTPUT_DIR}}
+      - docker build -t simplify-next-stork:1.6.0 -f {{.DOCKER_STORK_DIR}}/Dockerfile {{.DOCKER_STORK_DIR}}
+      - docker run --rm -v "$(pwd)/{{.SEARCH_CONTENT_DIR}}":/files simplify-next-stork:1.6.0 build --input config.toml --output search-index.st
+
+  clean:
+    desc: removes generated build output
+    silent: true
+    aliases: [c]
+    deps: [check-virtualenv]
+    cmds:
+      - cmd: rm -rf example/output
+        platforms: [linux, darwin]
+      - cmd: if exist example\output rmdir /s /q example\output
+        platforms: [windows]

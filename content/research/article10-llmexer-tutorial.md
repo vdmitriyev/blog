@@ -2,7 +2,7 @@ title: llmexer Tutorial - From a Literature Search to Reproducible LLM Experimen
 Date: 2026-09-24 23:00
 Summary: Step-by-step tutorial: search papers, build a dataset, and run reproducible prompt experiments across multiple LLMs with the llmexer CLI.
 Tags: llmexer, llm, literature review, research, ollama, openrouter, python, cli, tutorial
-
+TOC: show
 
 Screening research papers with large language models sounds simple: collect some papers, write a prompt, send it to a model. In practice it quickly turns into a pile of scripts, half-remembered prompt versions, and CSV files named `results_final_v3.csv`.
 

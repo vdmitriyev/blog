@@ -18,7 +18,9 @@ docs/_build/*
 **/pelican-plugins
 **/pure-single
 **/simplify-theme
+**/simplify-next
 **/_old
+content/config.toml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
