@@ -3,10 +3,7 @@ Date: 2016-03-03 18:00
 Summary:
 Tags: hadoop, streaming, xml, bigdata, python
 
-<center>
-    ![Hadoop Streaming and XML with Python]({static}../images/random/hadoop-streaming.png)
-</center>
-
+![Hadoop Streaming and XML with Python]({static}../images/random/hadoop-streaming.png)
 
 The general idea behind current post is to show how parsing of single XML file with Python script could be implemented with Hadoop Streaming.
 

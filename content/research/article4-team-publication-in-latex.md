@@ -5,12 +5,11 @@ Tags: collection, phd, research, latex, writing
 
 ![Don't get mad, get motivated and use LaTeX]({static}../images/random/dont-get-mad-use-latex.png)
 
-<center>
-**Publishing is not a sprint to the finish line.** </br>
-**There is no finish line.** </br>
-**You just keep on running.** </br>
+
+* **Publishing is not a sprint to the finish line.**
+* **There is no finish line.** 
+* **You just keep on running.**
 via [@GradElitism](https://twitter.com/GradElitism/status/606184614453846018)
-</center>
 
 A really huge amount of people around the glob use [LaTeX](http://www.latex-project.org/) as a primary software tool (or you can say "package") for writing, formating or just maintaining their own texts. Especially, it's very popular word processing package in academia, at least at part that is related to the [STEM](http://en.wikipedia.org/wiki/STEM_fields) ( **S**cience, **T**chnology, **E**ngineering, and **M**athematics).
 
