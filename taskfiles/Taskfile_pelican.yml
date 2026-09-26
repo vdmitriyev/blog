@@ -52,6 +52,7 @@ tasks:
     silent: true
     aliases: [si]
     deps: [check-virtualenv]
+    ignore_error: true
     vars:
       DOCKER_STORK_DIR: simplify-next/docker/stork
       SEARCH_CONFIG_SCRIPT: simplify-next/example/generate_search_config.py

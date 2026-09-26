@@ -67,7 +67,7 @@ The project lives in `.projects/0testruns/`. If you don't pass `--id`, a date-ba
 
 ## Step 3: Create a search
 
-To start the searc, a file with a search string should be created first:
+To start the search, a file with a search string should be created first:
 ```bash
 llmexer search create --pid 0testruns
 ```
@@ -90,7 +90,7 @@ llmexer search rename --pid 0testruns --old-id 20260924-782259a7 --new-id air-qu
 
 ### Write the query
 
-Open `searches/air-quality.yaml` and replace the value of `query` with our search string. The query uses the [Semantic Scholar bulk search syntax](https://api.semanticscholar.org/api-docs/#tag/Paper-Data/operation/get_graph_paper_bulk_search):
+Open `searches/air-quality.yaml` in any text editor and replace the value of the key `query` with our search string. The query uses the [Semantic Scholar bulk search syntax](https://api.semanticscholar.org/api-docs/#tag/Paper-Data/operation/get_graph_paper_bulk_search):
 
 - `|` means OR
 - `+` means AND, 
@@ -118,7 +118,7 @@ The `Results` column shows `No` because the search has not been run yet.
 
 ## Step 4: Run the search
 
-Then you are done with configuring the search string, now you can run the resarch itself:
+Then you are done with configuring the search string, now you can run the search itself:
 
 ```bash
 llmexer search run --pid 0testruns --file air-quality.yaml
@@ -126,10 +126,10 @@ llmexer search run --pid 0testruns --file air-quality.yaml
 
 ![Running the literature search]({static}../images/llmexer-tutorial/08-search-run.png)
 
-`llmexer` queries the Semantic Scholar bulk API and (if `OPENALEX_API_KEY` is set, OpenAlex will be also searched). Two files are written into `searches/`:
+`llmexer` queries the Semantic Scholar bulk API and (if `OPENALEX_API_KEY` is set, OpenAlex will be also searched). Two files are created in folder `searches/`:
 
 - `air-quality__results.csv`: one row per paper with title, authors, abstract, year, DOI, detected language, open access flag and more
-- `jsons/air-quality__results_raw.json`: the raw API responses (JSON files are kept for debuging reasons)
+- `jsons/air-quality__results_raw.json`: the raw API responses (JSON files are kept for debugging reasons)
 
 Before going further, it's worth taking a quick look at what you found:
 
@@ -143,7 +143,7 @@ If the result set needs cleaning, `llmexer search filter` can drop rows by langu
 
 ## Step 5: Initialize the experiment
 
-When you are done with search, it is a time to start experimenting with LLMs using data found through. For that, an initial step is required (will create folders and files used by the tool later):
+When you are done with search, it is a time to start experimenting with LLMs using data have been found through the search (e.g., abstracts, titles, keywords, etc.). For that, an initial step is required (will create folders and files used by the tool later):
 ```bash
 llmexer exp init --pid 0testruns
 ```
@@ -187,8 +187,7 @@ llmexer exp map --pid 0testruns
 ```
 ![Mapping every data row to the prompts]({static}../images/llmexer-tutorial/12-exp-map.png)
 
-
-### Choose your models
+### Choose your LLM models
 
 Now is the time to open `llms-for-experiment.csv` and list the models you actually have access to.
 Each row names a provider, a model and a `profile_name`. The profile must exist in `llm-params.csv` with the same provider and model. That's the file, where `temperature`, `top_p` and other `hyperparameters` are configured. Listing a model twice with two profiles runs with a bit different setting (e.g., temperature) is handy for comparing behavior of the same LLM model, a deterministic and a creative configuration.

@@ -3,8 +3,9 @@ Date: 2024-03-03 18:00
 Summary:
 Tags: python, blog, pelican, tutorial
 
+Last update: **26.09.2026**
 
-This tutorial will guide you through setting up and deploying a blog using [Pelican](https://github.com/getpelican/pelican). It is a popular static site generator written in Python. Pelican offers a powerful and flexible way to create beautiful and content-focused blogs. Original blogs could be written in Mardown and formated using special themes.
+This tutorial will guide you through setting up and deploying a blog using [Pelican](https://github.com/getpelican/pelican). It is a popular static site generator written in Python. Pelican offers a powerful and flexible way to create beautiful and content-focused blogs. Original blogs could be written in Markdown and formatted using special themes.
 
 <br>
 
@@ -27,18 +28,28 @@ pelican content
 This generates HTML files based on your Markdown content.
 
 <br>
-#### Alternative Compilation Method (Batch Script)
+#### Alternative Compilation Method 1: bat script
 <br>
 
 If you prefer, you can use the a batch script located at [scripts/compilePelican.bat](https://github.com/vdmitriyev/blog/blob/main/scripts/compilePelican.bat). This script performs the same function as the previous command. The script is a part of the blog repository of this blog project.
 
 <br>
+#### Alternative Compilation Method 1: using `task` file
+
+There is a ready `task` file to help you with installing, running and managing the content of the blog. Check the commands of the `task` by running in the root directory:
+```
+task
+``` 
+
+<br>
+
+<br>
 ### Install Theme
 <br>
-An example how to install a custom theme called ```simplify-theme```
+An example how to install a custom theme called ```simplify-next```
 ```bash
-git clone https://github.com/vuquangtrong/simplify-theme
-pelican-themes --install simplify-theme
+git clone https://github.com/vdmitriyev/simplify-next
+pelican-themes --install simplify-next
 ```
 
 <br>
@@ -73,8 +84,8 @@ Go to **Settings -> Secrets and variables -> Actions**.
 Create tokens for the following variables:
 
 * GOOGLE_ANALYTICS (optional, for Google Analytics integration)
-* PELICAN_THEME_REPO (URL of your theme repository, e.g., https://github.com/vuquangtrong/simplify-theme)
-* PELICAN_THEME_NAME (name of your theme, e.g., simplify-theme)
+* PELICAN_THEME_REPO (URL of your theme repository, e.g., https://github.com/vdmitriyev/simplify-next)
+* PELICAN_THEME_NAME (name of your theme, e.g., simplify-next)
 
 After that, you will need to **activate GitHub Pages** within your GitHub repository. In your GitHub repository settings, navigate to Pages. Select the branch named gh-pages and the source directory set to ```/root```. This configures GitHub Pages to use the content from your ```gh-pages``` branch.
 
@@ -84,6 +95,8 @@ Create a ```pelican.yml``` file in the ```.github/workflows``` of your github re
 #### Summary
 <br>
 
-This tutorial provides a foundation for getting started with Pelican and Github Pages. With its flexibility and ease of use, Pelican empowers you to create a compelling and personalized blog. Feel free to explore the official Pelican documentation for more advanced features and customization options.
+This tutorial provides a foundation for getting started with Pelican and Github Pages. Three is way more do do (e.g, search index, jobs in a `task` config file, etc.). 
+
+With its flexibility and ease of use, Pelican empowers you to create a compelling and personalized blog. Feel free to explore the official Pelican documentation for more advanced features and customization options.
 
 The current blog could be used as an example for your development - [blog](https://github.com/vdmitriyev/blog). It also contains further details on pelican usage on a local machine.

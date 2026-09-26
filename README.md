@@ -2,7 +2,7 @@
 
 Original articles of the following blog http://vdmitriyev.github.io/blog/ in the markdown format configured to be compiled with ```pelican``` and deployed/commited to the github.
 
-## Usage
+## Usage: manually
 
 * Install [pelican](https://github.com/getpelican/pelican) python package
 ```bash
@@ -26,10 +26,29 @@ pelican -r --listen
 * (alternative) use pre-shipped ```bat``` script
 ```scripts/startSimpleHTTP.bat```
 
+## Usage: using tasks
+
+* Create `.venv` and install dependencies
+	```
+	task py:install
+	```
+* Activate `.venv` (PS)
+	```
+	.\.venv\Scripts\Activate.ps1
+	```
+* Run the reload server (`.venv` must be activated)
+	```
+	task py:serve
+	```
+* Create search index
+	```
+	task py:search-index
+	```
+
 ### Deploy with Github Actions
 
 * Personal configurations - create a Github  tokens for (Settings -> Secret and variables -> Actions):
-	+ GOOGLE_ANALYTICS = 
+	+ GOOGLE_ANALYTICS = ''
 	+ PELICAN_THEME_REPO = https://github.com/vdmitriyev/simplify-next
 	+ PELICAN_THEME_NAME = simplify-next
 * Activate ```gh-pages``` in the git repository: Settings -> Pages -> Branch (set to ```gh-pages``` and ```/root```)
@@ -50,15 +69,16 @@ More about configs and configs themselves you can find in pelican's [quickstart]
 * Review themes
     + Github (all themes) - https://github.com/getpelican/pelican-themes
     + Github (selected themes) 
-		- https://github.com/vuquangtrong/simplify-theme
+		- https://github.com/vdmitriyev/simplify-next
 * Review plugins
-	+ Github (all plugins) - https://github.com/orgs/pelican-plugins/repositories
+	+ Github (all plugins) - https://github.com/pelican-plugins
 
-* Install themes (e.g, ```simplify-theme```)
+* Install themes (e.g, ```simplify-next```)
 ```
-git clone https://github.com/vuquangtrong/simplify-theme
-pelican-themes --install simplify-theme
+git clone https://github.com/vdmitriyev/simplify-next
+pelican-themes --install simplify-next
 ```
+* Add `simplify-next` folder to your `.gitignore`
 
 ### Author
 
