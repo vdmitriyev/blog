@@ -1,7 +1,7 @@
-Title: There Are No Good Days To Start New Business, Pick Randomly
+Title: There Are No Good Days To Start a New Business, Pick Randomly
 Date: 2014-04-25 00:00
 Summary:
-Tags: english, random, statistically average human, why not?
+Tags: english, random, human, thoughts
 
 Very nice Friday Evening!
 

@@ -1,7 +1,7 @@
 Title: Collection of Resource for Searching Scientific Publications
 Summary: This is a collection of online resources with other additional tricks for searching scientific/research publications.
 Date: 2015-01-26 15:20
-Tags: computer science, publication, research, collection
+Tags: publication, research, collection
 
 ### About
 

@@ -1,7 +1,7 @@
 Title: "One Liner" Shortcuts for Remembering More
 Date: 2015-01-23 00:00
 Summary: 
-Tags: howtos, improve, learn, memory
+Tags: tutorial, improve, learn, memory
 
 1. Extra attention to difficult information **[go-deeper] [focus-hard]**
 2. Visualization improves memory and recall **[mind-map] [hand-drawing]**

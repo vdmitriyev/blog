@@ -1,6 +1,6 @@
 Title: Проверка правописания русского языка в Notepad++
 Date: 2015-02-23 22:39
-Tags: notepad++, russian language, spell check
+Tags: notepad++, language, spell check, ru
 Summary: 
 
 Для многих разработчиков по Windows (и не только) текстовый редактор Notepad++ стал неотъемлемой частью их ежедневного рабочего процесса.
