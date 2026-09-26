@@ -56,10 +56,8 @@ PLUGINS = [
 
 # Social widget
 SOCIAL = {
-    'facebook': "#",
     'github'  : 'https://github.com/vdmitriyev',
-    'twitter' : 'https://twitter.com/vdmitriyev',
-    'linkedin': "#"
+    'twitter' : 'https://twitter.com/vdmitriyev'
 }
 
 DEFAULT_PAGINATION = 10

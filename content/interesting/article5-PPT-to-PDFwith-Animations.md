@@ -1,4 +1,4 @@
-w: How to export MS Power Point Slides to a PDF file and keep Animations
+title: How to export MS Power Point Slides to a PDF file and keep Animations
 Date: 2015-06-03 18:00
 Summary:
 Tags: PPT, PDF, animations, export
