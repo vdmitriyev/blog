@@ -1,0 +1,581 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head -->
+<head>
+
+        <!-- Required metadata tags -->
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+        <!-- Set the color mode before any CSS paints, to avoid a flash of the wrong theme -->
+        <script>
+            (function () {
+                var stored = null;
+                try {
+                    stored = localStorage.getItem('theme');
+                } catch (err) {
+                    // ignore (e.g. blocked storage)
+                }
+                var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-bs-theme', theme);
+            })();
+        </script>
+
+            <!-- Cookie-consent state, read before any tracker script below runs -->
+            <script>
+                (function () {
+                    var stored = null;
+                    try {
+                        stored = localStorage.getItem('gdprConsent');
+                    } catch (err) {
+                        // ignore (e.g. blocked storage)
+                    }
+                    window.gdprConsentGiven = stored === 'accepted';
+                    window.__gdprPendingLoaders = [];
+                })();
+            </script>
+
+        <!-- Default metadata -->
+    <meta name="author" content="vdmitriyev" />
+    <meta name="description" content="Step-by-step tutorial: search papers, build a dataset, and run reproducible prompt experiments across multiple LLMs with the llmexer CLI." />
+    <meta name="keywords" content="llmexer, llm, literature review, research, ollama, openrouter, python, cli, tutorial">
+<meta property="og:site_name" content="Viktor's blog" />
+<meta property="og:title" content="llmexer Tutorial - From a Literature Search to Reproducible LLM Experiments with Search Results" />
+<meta property="og:description" content="Step-by-step tutorial: search papers, build a dataset, and run reproducible prompt experiments across multiple LLMs with the llmexer CLI." />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="./llmexer-tutorial-from-a-literature-search-to-reproducible-llm-experiments-with-search-results.html" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-09-24 23:00:00+02:00" />
+<meta property="article:modified_time" content="" />
+<meta property="article:author" content="./author/vdmitriyev.html">
+<meta property="article:section" content="research" />
+	<meta property="article:tag" content="llmexer" />
+	<meta property="article:tag" content="llm" />
+	<meta property="article:tag" content="literature review" />
+	<meta property="article:tag" content="research" />
+	<meta property="article:tag" content="ollama" />
+	<meta property="article:tag" content="openrouter" />
+	<meta property="article:tag" content="python" />
+	<meta property="article:tag" content="cli" />
+	<meta property="article:tag" content="tutorial" />
+	<meta property="og:image" content="./">
+
+        <!-- Site Claim -->
+
+
+        <!-- Title -->
+        <title>
+    llmexer Tutorial - From a Literature Search to Reproducible LLM Experiments with Search Results &ndash; Viktor's blog
+        </title>
+        
+        <!-- Icon -->
+        <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+        <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+        <!-- Search engine -->
+            <meta name="robots" content="" />
+
+        <!-- Feeds -->
+
+
+
+
+
+
+
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.8/css/bootstrap.min.css">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.css">
+        <link rel="stylesheet" id="pygmentsStyle" href="https://cdn.jsdelivr.net/gh/richleland/pygments-css/friendly.css">
+        <script>
+            (function () {
+                if (document.documentElement.getAttribute('data-bs-theme') === 'dark') {
+                    document.getElementById('pygmentsStyle').href = 'https://cdn.jsdelivr.net/gh/richleland/pygments-css/monokai.css';
+                }
+            })();
+        </script>
+        <link rel="stylesheet" href="./theme/style.css">
+
+        <!-- Google Analytics -->
+<script>
+(function () {
+    var _load = function () {
+        (function(i, s, o, g, r, a, m) { i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m) })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-59176821-3', 'auto');
+        ga('send', 'pageview');
+    };
+        window.__gdprPendingLoaders.push(_load);
+        if (window.gdprConsentGiven) { _load(); }
+})();
+</script>
+        <!-- Google Global Site Tag -->
+
+        <!-- Google Tag Manager -->
+
+        <!-- Google Adsense -->
+
+        <!-- Heap Analytic -->
+
+        <!-- Matomo Tracking -->
+
+</head>
+
+<!-- Body -->
+<body class="d-flex flex-column" data-bs-spy="scroll" data-bs-target="#toc" style="position: relative;">
+    <!-- Top anchor -->
+    <a href="#" id="backToTop" style="display: none; z-index: 1;" title="Back to top"><span></span></a>
+
+    <!-- Google tag manager -->
+
+    <!-- Cookie consent -->
+<div id="gdprConsentBanner" class="d-none position-fixed bottom-0 start-0 end-0 bg-dark text-light p-3 shadow-lg" style="z-index: 1050;">
+    <div class="container d-flex flex-wrap align-items-center justify-content-between gap-2">
+        <p class="mb-0 me-3">
+            This site uses cookies for analytics and other tracking.
+<a href="./pages/privacy-policy.html" class="text-light text-decoration-underline">Learn more</a>.        </p>
+        <div class="d-flex gap-2">
+            <button type="button" id="gdprConsentReject" class="btn btn-outline-light btn-sm">Reject</button>
+            <button type="button" id="gdprConsentAccept" class="btn btn-light btn-sm">Accept</button>
+        </div>
+    </div>
+</div>
+    <!-- Navigation -->
+    <nav class="flex-shrink-0 navbar navbar-expand-md navbar-expand-lg navbar-dark bg-dark text-light shadow-sm">
+        <div class="container">
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon small"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="navbarMenu">
+
+            <!-- i18n subsites -->
+
+            <!-- Page links -->
+            <ul class="navbar-nav me-auto text-center">
+                <li class="nav-item ">                           
+                    <a class="nav-link" href=".">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
+                            <path d="M21 13v10h-6v-6h-6v6h-6v-10h-3l12-12 12 12h-3zm-1-5.907v-5.093h-3v2.093l3 3z" fill="currentColor"></path>
+                        </svg>
+                        Home <span class="visually-hidden">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="./categories.html">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
+                            <path d="M16 6h-8v-6h8v6zm-8 12h-8v6h8v-6zm16 0h-8v6h8v-6zm-11-7v-3h-2v3h-8v5h2v-3h14v3h2v-5h-8z" fill="currentColor"></path>
+                        </svg>
+                        Categories
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="./tags.html">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
+                            <path d="M10.605 0h-10.605v10.609l13.391 13.391 10.609-10.604-13.395-13.396zm-4.191 6.414c-.781.781-2.046.781-2.829.001-.781-.783-.781-2.048 0-2.829.782-.782 2.048-.781 2.829-.001.782.782.781 2.047 0 2.829z" fill="currentColor"></path>
+                        </svg>
+                        Tags
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="./archives.html">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
+                            <path d="M1.8 9l-.8-4h22l-.8 4h-2.029l.39-2h-17.122l.414 2h-2.053zm18.575-6l.604-2h-17.979l.688 2h16.687zm3.625 8l-2 13h-20l-2-13h24zm-8 4c0-.552-.447-1-1-1h-6c-.553 0-1 .448-1 1s.447 1 1 1h6c.553 0 1-.448 1-1z" fill="currentColor"></path>
+                        </svg>
+                        Archives
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="./pages/about.html">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
+                            <path d="M20.822 18.096c-3.439-.794-6.64-1.49-5.09-4.418 4.72-8.912 1.251-13.678-3.732-13.678-5.082 0-8.464 4.949-3.732 13.678 1.597 2.945-1.725 3.641-5.09 4.418-3.073.71-3.188 2.236-3.178 4.904l.004 1h23.99l.004-.969c.012-2.688-.092-4.222-3.176-4.935z" fill="currentColor"></path>
+                        </svg>
+                        About
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Dark / light theme switch -->
+            <ul class="navbar-nav me-md-3 text-center">
+                <li class="nav-item">
+                    <button class="btn nav-link mx-auto" type="button" id="themeToggle" title="Toggle dark / light theme" aria-label="Toggle dark / light theme">
+                        <svg class="nav-icon me-0 theme-icon-light" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"></path>
+                        </svg>
+                        <svg class="nav-icon me-0 theme-icon-dark" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278"></path>
+                            <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.73 1.73 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.73 1.73 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.73 1.73 0 0 0 1.097-1.097zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"></path>
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Search form -->
+            <form class="text-center" action="./search.html">
+                <input class="form-control w-100 text-center border-0 p-2" type="text" name="q" pattern=".{3,}" title="At least 3 characters" required="" placeholder="Type here to search" aria-label="Search">
+            </form>
+
+            <!-- Social links -->
+            <ul class="navbar-nav text-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/vdmitriyev">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <title>Github</title>
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" fill="currentColor"></path>
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://twitter.com/vdmitriyev">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <title>Twitter</title>
+                            <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.066 9.645c.183 4.04-2.83 8.544-8.164 8.544-1.622 0-3.131-.476-4.402-1.291 1.524.18 3.045-.244 4.252-1.189-1.256-.023-2.317-.854-2.684-1.995.451.086.895.061 1.298-.049-1.381-.278-2.335-1.522-2.304-2.853.388.215.83.344 1.301.359-1.279-.855-1.641-2.544-.889-3.835 1.416 1.738 3.533 2.881 5.92 3.001-.419-1.796.944-3.527 2.799-3.527.825 0 1.572.349 2.096.907.654-.128 1.27-.368 1.824-.697-.215.671-.67 1.233-1.263 1.589.581-.07 1.135-.224 1.649-.453-.384.578-.87 1.084-1.433 1.489z" fill="currentColor"></path>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+
+    <!-- Full page -->
+    <div class="flex-shrink-0 flex-grow-1">
+
+        <!-- Header -->
+        <header class="bg-dark text-light shadow-sm pt-3 pb-2">
+	<div class="container">
+		<h3 id="llmexer-tutorial-from-a-literature-search-to-reproducible-llm-experiments-with-search-results">llmexer Tutorial - From a Literature Search to Reproducible LLM Experiments with Search Results</h3>
+		<p style="font-size:larger;"><p>Step-by-step tutorial: search papers, build a dataset, and run reproducible prompt experiments across multiple LLMs with the llmexer CLI.</p></p>
+        <div class="row mx-auto mt-3">
+            <div class="col-xs-12 col-sm-12 col-md-6 text-start" style="padding: 0">
+                <a href="./author/vdmitriyev.html" class="card-link">vdmitriyev</a>
+                <span class="card-link text-success">
+                    <span class="post-date" title="Post date">September 2026</span>
+                    <span class="text-info modified-date" title="Updated date">
+                            September 2026
+                    </span>
+                </span>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 text-end" style="padding: 0">
+                <a class="badge text-bg-success" href="./category/research.html">research</a>
+                    <a class="badge text-bg-info" href="./tag/llmexer.html">llmexer</a>
+                    <a class="badge text-bg-info" href="./tag/llm.html">llm</a>
+                    <a class="badge text-bg-info" href="./tag/literature-review.html">literature review</a>
+                    <a class="badge text-bg-info" href="./tag/research.html">research</a>
+                    <a class="badge text-bg-info" href="./tag/ollama.html">ollama</a>
+                    <a class="badge text-bg-info" href="./tag/openrouter.html">openrouter</a>
+                    <a class="badge text-bg-info" href="./tag/python.html">python</a>
+                    <a class="badge text-bg-info" href="./tag/cli.html">cli</a>
+                    <a class="badge text-bg-info" href="./tag/tutorial.html">tutorial</a>
+            </div>
+        </div>
+	</div>
+        </header>
+
+        <!-- Main -->
+        <main class="py-3">
+                <div class="container">
+                    <!-- Content -->
+    <!-- 2 columns layout -->
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10">
+                <!-- Article -->
+                <p>Screening research papers with large language models sounds simple: collect some papers, write a prompt, send it to a model. In practice it quickly turns into a pile of scripts, half-remembered prompt versions, and CSV files named <code>results_final_v3.csv</code>.</p>
+<p><a href="https://github.com/vdmitriyev/llmexer"><code>llmexer</code></a> is a small CLI that keeps this workflow in order. Its core idea is that <strong>everything is a file</strong>: projects, searches, prompts, model lists and results all live as plain YAML, CSV, text and SQLite files inside one project folder. The CLI edits these files for you, but you can always open and change them by hand, and you can put the whole folder under git.</p>
+<p>In this tutorial we walk through a complete run: we search the literature on demand-driven air quality monitoring, turn the results into a dataset, pair it with an LLM prompt, run the experiment against several models, and export a report you can screen in the browser.</p>
+<blockquote>
+<p>⚠️ <code>llmexer</code> is in early beta, so commands and output may change between versions. This tutorial was written against version <strong>0.4.7</strong>.</p>
+</blockquote>
+<h2>What you need</h2>
+<ul>
+<li>Python </li>
+<li><a href="https://docs.astral.sh/uv/"><code>uv</code></a> (<code>pip</code> works as well)</li>
+<li>Access to at least one LLM: a local <a href="https://ollama.com/">ollama</a> or <a href="https://vllm.ai/">vLLM</a> server, or an API key for LiteLLM or OpenRouter</li>
+</ul>
+<h2>Step 1: Install <code>llmexer</code></h2>
+<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>llmexer
+</code></pre></div>
+
+<p><img alt="Installing llmexer with uv" src="./images/llmexer-tutorial/01-install.png"></p>
+<p>Check that the CLI is available:</p>
+<div class="highlight"><pre><span></span><code>llmexer<span class="w"> </span>self<span class="w"> </span>version
+</code></pre></div>
+
+<p><img alt="Checking the installed version" src="./images/llmexer-tutorial/02-version.png"></p>
+<p>Running <code>llmexer --help</code> shows every available option at any point. There is also a help option for each command, for example: <code>llmexer exp stats --help</code></p>
+<h3>Configure access to your LLMs</h3>
+<p><code>llmexer</code> reads its settings from a <code>.env</code> file in the directory you run it from. Add the providers you want to use, for example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># local ollama (example with default avlue)</span>
+<span class="na">PROVIDER_OLLAMA_URL</span><span class="o">=</span><span class="s">http://localhost:11434/v1</span>
+
+<span class="c1"># optional: a second search engine next to Semantic Scholar</span>
+<span class="na">OPENALEX_API_KEY</span><span class="o">=</span><span class="s">...</span>
+</code></pre></div>
+
+<p>The full list of variables is in the <a href="https://github.com/vdmitriyev/llmexer#-env-configurations">configuration section of the README</a>. 
+You can check what <code>llmexer</code> picked up with <code>llmexer self envs</code>.</p>
+<h2>Step 2: Create a new project</h2>
+<p>A project is the top-level folder that holds your searches, papers, experiments and analysis.</p>
+<div class="highlight"><pre><span></span><code>llmexer<span class="w"> </span>project<span class="w"> </span>create<span class="w"> </span>--id<span class="w"> </span>0testruns
+</code></pre></div>
+
+<p><img alt="Creating a project" src="./images/llmexer-tutorial/03-project-create.png"></p>
+<p>The project lives in <code>.projects/0testruns/</code>. If you don't pass <code>--id</code>, a date-based ID such as <code>20260924-3a9adf70</code> is generated for you.</p>
+<blockquote>
+<p>💡 <strong>Tip:</strong> add <code>PROJECT_ID=0testruns</code> to your <code>.env</code> file and you can leave out <code>--pid</code> from every command below.</p>
+</blockquote>
+<h2>Step 3: Create a search</h2>
+<p>To start the search, a file with a search string should be created first:</p>
+<div class="highlight"><pre><span></span><code>llmexer<span class="w"> </span>search<span class="w"> </span>create<span class="w"> </span>--pid<span class="w"> </span>0testruns
+</code></pre></div>
+
+<p><img alt="Creating a search configuration" src="./images/llmexer-tutorial/04-search-create.png"></p>
+<p>This writes a search configuration with a generated name (for example <code>20260924-782259a7.yaml</code>) into <code>.projects/0testruns/searches/</code>. Note that the option here is <code>--pid</code>, the project the search belongs to.</p>
+<h3>Give the search a meaningful name</h3>
+<p>Generated IDs are hard to remember, so rename the search to <code>air-quality</code>:</p>
+<div class="highlight"><pre><span></span><code>llmexer<span class="w"> </span>search<span class="w"> </span>rename<span class="w"> </span>--pid<span class="w"> </span>0testruns<span class="w"> </span>--old-id<span class="w"> </span><span class="m">20260924</span>-782259a7<span class="w"> </span>--new-id<span class="w"> </span>air-quality
+</code></pre></div>
+
+<p><img alt="Renaming the search" src="./images/llmexer-tutorial/05-search-rename.png"></p>
+<p><code>search rename</code> also renames any result files that belong to the search. Right after <code>search create</code> there is only the YAML file, so renaming it by hand in the <code>searches/</code> folder works just as well.</p>
+<h3>Write the query</h3>
+<p>Open <code>searches/air-quality.yaml</code> in any text editor and replace the value of the key <code>query</code> with our search string. The query uses the <a href="https://api.semanticscholar.org/api-docs/#tag/Paper-Data/operation/get_graph_paper_bulk_search">Semantic Scholar bulk search syntax</a>:</p>
+<ul>
+<li><code>|</code> means OR</li>
+<li><code>+</code> means AND, </li>
+<li>quotes mark exact phrases. </li>
+</ul>
+<p>The example search term contains mix of English and German terms:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">query</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;(&quot;air</span><span class="nv"> </span><span class="s">quality&quot;</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">&quot;luftmessstationen&quot;)</span><span class="nv"> </span><span class="s">+</span><span class="nv"> </span><span class="s">(&quot;demands&quot;</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">&quot;requirements&quot;</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">&quot;anforderungen&quot;</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">&quot;bedarfsorientiert&quot;)</span><span class="nv"> </span><span class="s">+</span><span class="nv"> </span><span class="s">(measure</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">measuring</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">tracking</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">monitoring</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">messungen)</span><span class="nv"> </span><span class="s">+</span><span class="nv"> </span><span class="s">(</span><span class="nv"> </span><span class="s">provision</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">providing</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">bereitstellung)&#39;</span>
+<span class="nt">year</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2020-2025</span>
+<span class="nt">onlyOpenAccess</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</code></pre></div>
+
+<p><img alt="The finished search configuration" src="./images/llmexer-tutorial/06-search-yaml.png"></p>
+<p>The <code>year</code> range and the <code>onlyOpenAccess</code> flag come from the template; adjust them as needed. To see all searches of the project, run:</p>
+<div class="highlight"><pre><span></span><code>llmexer<span class="w"> </span>search<span class="w"> </span>list<span class="w"> </span>--pid<span class="w"> </span>0testruns
+</code></pre></div>
+
+<p><img alt="Listing the searches of a project" src="./images/llmexer-tutorial/07-search-list.png"></p>
+<p>The <code>Results</code> column shows <code>No</code> because the search has not been run yet.</p>
+<h2>Step 4: Run the search</h2>
+<p>Then you are done with configuring the search string, now you can run the search itself:</p>
+<div class="highlight"><pre><span></span><code>llmexer<span class="w"> </span>search<span class="w"> </span>run<span class="w"> </span>--pid<span class="w"> </span>0testruns<span class="w"> </span>--file<span class="w"> </span>air-quality.yaml
+</code></pre></div>
+
+<p><img alt="Running the literature search" src="./images/llmexer-tutorial/08-search-run.png"></p>
+<p><code>llmexer</code> queries the Semantic Scholar bulk API and (if <code>OPENALEX_API_KEY</code> is set, OpenAlex will be also searched). Two files are created in folder <code>searches/</code>:</p>
+<ul>
+<li><code>air-quality__results.csv</code>: one row per paper with title, authors, abstract, year, DOI, detected language, open access flag and more</li>
+<li><code>jsons/air-quality__results_raw.json</code>: the raw API responses (JSON files are kept for debugging reasons)</li>
+</ul>
+<p>Before going further, it's worth taking a quick look at what you found:</p>
+<div class="highlight"><pre><span></span><code>llmexer<span class="w"> </span>search<span class="w"> </span>stats<span class="w"> </span>--pid<span class="w"> </span>0testruns<span class="w"> </span>--file<span class="w"> </span>air-quality.yaml
+</code></pre></div>
+
+<p><img alt="Statistics of the search results" src="./images/llmexer-tutorial/09-search-stats.png"></p>
+<p>If the result set needs cleaning, <code>llmexer search filter</code> can drop rows by language, source, DOI or download state, and <code>llmexer search export</code> renders the results as a browseable HTML page. This particular export to HTML feature is quite usefully for quickly viewing search results.</p>
+<h2>Step 5: Initialize the experiment</h2>
+<p>When you are done with search, it is a time to start experimenting with LLMs using data have been found through the search (e.g., abstracts, titles, keywords, etc.). For that, an initial step is required (will create folders and files used by the tool later):</p>
+<div class="highlight"><pre><span></span><code>llmexer<span class="w"> </span>exp<span class="w"> </span>init<span class="w"> </span>--pid<span class="w"> </span>0testruns
+</code></pre></div>
+
+<p><img alt="Initializing the experiment folder" src="./images/llmexer-tutorial/10-exp-init.png"></p>
+<p>Side note: <code>exp</code> is a short alias for <code>experiment</code> </p>
+<p>This creates the <code>experiment/</code> folder with templates that together describe an experiment:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>What it holds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data.csv</code></td>
+<td>The input rows (papers)</td>
+</tr>
+<tr>
+<td><code>prompts/prompt01.txt</code></td>
+<td>A starter <a href="https://jinja.palletsprojects.com/">Jinja2</a> prompt using <code>{{title}}</code>, <code>{{abstract}}</code>, <code>{{doi}}</code> and <code>{{year}}</code></td>
+</tr>
+<tr>
+<td><code>mapping.csv</code></td>
+<td>Which prompt each data row uses</td>
+</tr>
+<tr>
+<td><code>llms-for-experiment.csv</code></td>
+<td>The models to test, each with a parameter profile</td>
+</tr>
+<tr>
+<td><code>llm-params.csv</code></td>
+<td>Hyperparameter profiles (temperature, top_p, max_tokens, …)</td>
+</tr>
+</tbody>
+</table>
+<p>The starter prompt asks the model to check whether a paper's title describes its abstract and to answer in JSON. Replace it with your own screening question, or add more prompts as <code>prompt02.txt</code>, <code>prompt03.txt</code> and so on.</p>
+<h2>Step 6: Copy the search results into the experiment</h2>
+<p>Then the experiment has been initialized, not you could copy your search data into the experiment related files.</p>
+<div class="highlight"><pre><span></span><code>llmexer<span class="w"> </span>exp<span class="w"> </span>copy-search<span class="w"> </span>--pid<span class="w"> </span>0testruns<span class="w"> </span>--file<span class="w"> </span>air-quality__results.csv
+</code></pre></div>
+
+<p><img alt="Copying the search results into data.csv" src="./images/llmexer-tutorial/11-exp-copy-search.png"></p>
+<p>This replaces the template <code>data.csv</code> with the search results in the format <code>ID;Title;Abstract;year;doi;authors</code>, keeping the original row order. The previous <code>data.csv</code> file is backed up, so nothing is lost. However, if the backup is not needed anymore, it could bre manually removed anytime.</p>
+<h2>Step 7: Map data rows to prompts</h2>
+<p>This step could be done manually, but there is a convince CLI command for that - <code>map</code>.</p>
+<p><code>map</code> rebuilds <code>mapping.csv</code> by pairing every data row with every prompt. With one prompt, each paper gets one row. To pick specific prompts, pass <code>--prompt prompt01,prompt02</code>.</p>
+<div class="highlight"><pre><span></span><code>llmexer<span class="w"> </span>exp<span class="w"> </span>map<span class="w"> </span>--pid<span class="w"> </span>0testruns
+</code></pre></div>
+
+<p><img alt="Mapping every data row to the prompts" src="./images/llmexer-tutorial/12-exp-map.png"></p>
+<h3>Choose your LLM models</h3>
+<p>Now is the time to open <code>llms-for-experiment.csv</code> and list the models you actually have access to.
+Each row names a provider, a model and a <code>profile_name</code>. The profile must exist in <code>llm-params.csv</code> with the same provider and model. That's the file, where <code>temperature</code>, <code>top_p</code> and other <code>hyperparameters</code> are configured. Listing a model twice with two profiles runs with a bit different setting (e.g., temperature) is handy for comparing behavior of the same LLM model, a deterministic and a creative configuration.</p>
+<h2>Step 8: Try a single combination first</h2>
+<p>Before sending hundreds of requests, check what one prompt returns for one paper. If you don't want to type the IDs yourself, let <code>llmexer</code> suggest a random combination:</p>
+<div class="highlight"><pre><span></span><code>llmexer<span class="w"> </span>exp<span class="w"> </span>try<span class="w"> </span>--pid<span class="w"> </span>0testruns<span class="w"> </span>--suggest
+</code></pre></div>
+
+<p><img alt="Letting llmexer suggest a try command" src="./images/llmexer-tutorial/14-exp-try-suggest.png"></p>
+<p><code>--suggest</code> runs nothing; it prints a ready-to-use command. Copy and run it to call the model and see its answer. </p>
+<p>Adding the global <code>--dry-run</code> flag prints the fully rendered prompt without calling the LLM, which is the fastest way to check that your template fills in correctly:</p>
+<div class="highlight"><pre><span></span><code>llmexer<span class="w"> </span>--dry-run<span class="w"> </span>exp<span class="w"> </span>try<span class="w"> </span>--pid<span class="w"> </span>0testruns<span class="w"> </span>--data-id<span class="w"> </span>S01<span class="w"> </span>--prompt<span class="w"> </span>prompt01<span class="w"> </span>--profile<span class="w"> </span>ollama-phi4-creative
+</code></pre></div>
+
+<p><img alt="Previewing the rendered prompt with --dry-run" src="./images/llmexer-tutorial/16-exp-try-dryrun.png"></p>
+<h2>Step 9: Generate the experiments</h2>
+<p>Once the prompt deliver expected results, generate the full experiment:</p>
+<div class="highlight"><pre><span></span><code>llmexer<span class="w"> </span>exp<span class="w"> </span>generate<span class="w"> </span>--pid<span class="w"> </span>0testruns
+</code></pre></div>
+
+<p><img alt="Generating the experiment database" src="./images/llmexer-tutorial/15-exp-generate.png"></p>
+<p><code>generate</code> renders every combination of data row × prompt × model × parameter profile and stores it in a new SQLite database, <code>experiment/experiment_&lt;date&gt;_&lt;n&gt;.db</code>. </p>
+<p>In our example, 8 papers × 1 prompt × 4 models give 32 rows spread over three provider tables. A model without a matching profile is skipped.</p>
+<p>Use <code>llmexer --dry-run exp generate --pid 0testruns</code> to see how many rows you would get without writing anything. If you add a model or prompt later, <code>llmexer exp update</code> appends the missing combinations to the existing database instead of starting over.</p>
+<h2>Step 10: Run the experiments</h2>
+<p>Finally running the experiments:</p>
+<div class="highlight"><pre><span></span><code>llmexer<span class="w"> </span>exp<span class="w"> </span>run<span class="w"> </span>--pid<span class="w"> </span>0testruns<span class="w"> </span>--parallel-calls<span class="w"> </span><span class="m">2</span>
+</code></pre></div>
+
+<p><code>run</code> sends every pending row to its provider and writes the answers back into the same database. <code>--parallel-calls 2</code> keeps two requests in flight at once (since most of a run is spent waiting for the model, parallel calls saves a lot of time). In addition, each response is also saved as a JSON file in <code>experiment/responses/</code>.</p>
+<p>Want to see what will happen first without sending any request to the LLM? Add <code>--dry-run</code>:</p>
+<div class="highlight"><pre><span></span><code>llmexer<span class="w"> </span>--dry-run<span class="w"> </span>exp<span class="w"> </span>run<span class="w"> </span>--pid<span class="w"> </span>0testruns<span class="w"> </span>--parallel-calls<span class="w"> </span><span class="m">2</span>
+</code></pre></div>
+
+<p><img alt="Previewing the run with --dry-run" src="./images/llmexer-tutorial/17-exp-run-dryrun.png"></p>
+<p>A few things that make long runs less painful:</p>
+<ul>
+<li><strong>Resumable:</strong> rows that already finished are skipped when you run the command again, so an interrupted run just continues.</li>
+<li><strong>Filterable:</strong> <code>--filter-provider ollama</code>, <code>--filter-model gemma4:31b</code> or <code>--filter-profile</code> limit a run to part of the database, which helps when only one backend is up.</li>
+<li><strong>Budget cap:</strong> OpenRouter spending per run is limited by <code>PROVIDER_OPENROUTER_MAX_SPEND</code> (default $5).</li>
+</ul>
+<p>Progress and token counts are available at any time with <code>llmexer exp stats --pid 0testruns</code>.</p>
+<h2>Step 11: Export a report</h2>
+<div class="highlight"><pre><span></span><code>llmexer<span class="w"> </span>exp<span class="w"> </span><span class="nb">export</span><span class="w"> </span>--pid<span class="w"> </span>0testruns
+</code></pre></div>
+
+<p><img alt="Exporting the experiment as HTML" src="./images/llmexer-tutorial/18-exp-export.png"></p>
+<p>The export is a single self-contained HTML page written next to the database. It has sortable columns, per-column filters, a copy button on every cell, and a ready-to-run <code>experiment try</code> command for each row:</p>
+<center>
+    ![The exported HTML report in the browser]({static}../images/llmexer-tutorial/20-exp-export-html.png)
+</center>
+
+<p>Exports accept the same filters as <code>run</code>, plus two of their own: <code>--filter-code</code> (a glob over the row code) and <code>--filter-response</code> (a regular expression over the model answer), for example <code>--filter-response '"doesTitleDescribeAbstract":\s*"no"'</code>. This filter option is useful, if a database with experiments contains over 10K rows - without a filter, the exported HTML will be too big for a browser to handle. </p>
+<h2>Next steps</h2>
+<ul>
+<li><strong>Analyse the answers:</strong> creates Jupyter notebooks that parse the JSON answers into columns, and measures agreement between models with Cohen's kappa.<ul>
+<li><code>llmexer analysis init --pid 0testruns</code> </li>
+<li><code>llmexer analysis add-agreement</code></li>
+</ul>
+</li>
+<li><strong>Work with full texts:</strong> fetches open-access PDFs by DOI, <code>llmexer papers extract</code> turns them into text, and <code>llmexer exp copy-papers</code> feeds that text into an experiment instead of abstracts.<ul>
+<li><code>llmexer papers download</code></li>
+</ul>
+</li>
+<li><strong>Look under the hood:</strong> the experiment database is plain SQLite, so you can open it in a tool like <a href="https://dbeaver.io/">DBeaver</a> and use SQL to query it directly.</li>
+</ul>
+<p>The source code, full documentation and issue tracker are on GitHub: <a href="https://github.com/vdmitriyev/llmexer">github.com/vdmitriyev/llmexer</a>.</p>
+
+                <!-- Neighbors -->
+                    <br>
+                    <b>Read more:</b><br>
+<div class="pagination">
+    <a class="w-100" href="./unlock-syntax-highlighting-in-notepad-for-go.html">
+Unlock Syntax Highlighting in Notepad++ for Go
+    </a>
+</div>
+                <!-- Google Adsense -->
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-md-2 d-none d-md-block small">
+                <div class="sticky-top">
+                    <!-- ToC -->
+                    <nav id="toc" data-toggle="toc" ></nav>
+
+                    <!-- Share post -->
+
+                    <!-- Google Adsense -->
+                </div>
+            </div>
+        </div>
+
+    <!-- Releated posts -->
+
+    <!-- Comments -->
+                </div>
+        </main>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="flex-shrink-0 bg-dark text-light small py-1">
+        <div class="container text-center">
+            &copy; 2026 <a href=".">Viktor's blog</a> by <a href="./pages/about.html">vdmitriyev</a>. Powered by <a href="http://getpelican.com">Pelican</a>, <a href="http://python.org">Python</a>, <a href="https://getbootstrap.com">Bootstrap 5</a><br>
+            <!-- Do not remove below -->
+            Based on <a href="https://github.com/vdmitriyev/simplify-next">Simplify-Next Theme</a>
+ &middot; <a href="./pages/privacy-policy.html">Privacy Policy</a>        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.8/js/bootstrap.bundle.min.js"></script>
+        <!-- bootstrap-toc's JS still requires jQuery, so it's only loaded here -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js"></script>
+    <script type="text/javascript" src="./theme/style.js"></script>
+
+    <!-- JSON LD -->
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "name": "llmexer Tutorial - From a Literature Search to Reproducible LLM Experiments with Search Results",
+    "headline": "llmexer Tutorial - From a Literature Search to Reproducible LLM Experiments with Search Results",
+    "datePublished": "2026-09-24 23:00:00+02:00",
+    "dateModified": "",
+    "author": {
+        "@type": "Person",
+        "name": "vdmitriyev",
+        "url": "./author/vdmitriyev.html"
+    },
+    "image": "./favicon.ico",
+    "url": "./llmexer-tutorial-from-a-literature-search-to-reproducible-llm-experiments-with-search-results.html",
+    "description": "Step-by-step tutorial: search papers, build a dataset, and run reproducible prompt experiments across multiple LLMs with the llmexer CLI."
+}
+</script>
+    <!-- Disqus count -->
+</body>
+
+</html>
