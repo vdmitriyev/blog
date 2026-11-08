@@ -2,7 +2,7 @@ import os
 import sys
 from datetime import datetime
 
-GOOGLE_ANALYTICS = None
+GOOGLE_ANALYTICS, GOOGLE_SITE_TAG = None, None
 
 try:
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) + "\\")
@@ -12,6 +12,18 @@ except Exception as ex:
     GOOGLE_ANALYTICS = os.environ.get("GOOGLE_ANALYTICS")
 
 print(f"[i] using GOOGLE_ANALYTICS: {GOOGLE_ANALYTICS}")
+
+if GOOGLE_ANALYTICS is not None:
+    print ('[x] GOOGLE_ANALYTICS functionality is deprecated. Consider moving to the Google Site Tag.')
+    
+try:
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) + "\\")
+    from personal_configs import GOOGLE_SITE_TAG
+except Exception as ex:
+    print("[e] exception: {}".format(str(ex)))
+    GOOGLE_SITE_TAG = os.environ.get("GOOGLE_SITE_TAG")
+
+print(f"[i] using GOOGLE_SITE_TAG: {GOOGLE_SITE_TAG}")
 
 AUTHOR = "vdmitriyev"
 SITENAME = "Viktor's blog"

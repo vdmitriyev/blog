@@ -48,7 +48,7 @@ pelican -r --listen
 ### Deploy with Github Actions
 
 * Personal configurations - create a Github  tokens for (Settings -> Secret and variables -> Actions):
-	+ GOOGLE_ANALYTICS = ''
+	+ GOOGLE_SITE_TAG = ''
 	+ PELICAN_THEME_REPO = https://github.com/vdmitriyev/simplify-next
 	+ PELICAN_THEME_NAME = simplify-next
 * Activate ```gh-pages``` in the git repository: Settings -> Pages -> Branch (set to ```gh-pages``` and ```/root```)
@@ -60,7 +60,7 @@ pelican -r --listen
 
 You need to create ```personal_configs.py``` file and fill following fields:
 ```text
-GOOGLE_ANALYTICS = u'UA-'
+GOOGLE_SITE_TAG = u'G-'
 ```
 More about configs and configs themselves you can find in pelican's [quickstart](https://docs.getpelican.com/en/latest/quickstart.html)
 
